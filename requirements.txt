@@ -1,0 +1,22 @@
+# Core AI & Deep Learning (Deliverable 1, 5)
+torch>=2.0.0
+torchaudio>=2.0.0
+transformers>=4.30.0    # For loading Wav2Vec2 and pre-trained pipelines
+huggingface-hub>=0.16.0
+
+# Audio Processing & Real-Time Capture (Deliverable 2, 3)
+pyaudio>=0.2.13         # Critical for accessing the Microphone
+librosa>=0.10.0         # For audio feature extraction (LFCC/MFCC) and utility
+numpy>=1.24.0           # Fast array processing for audio chunks
+scipy>=1.10.0           # Signal processing helpers
+soundfile>=0.12.0       # Audio backend support
+
+# Voice Activity Detection (Deliverable 3 - Robustness)
+webrtcvad>=2.0.10       # Removes silence/noise before sending to AI
+
+# Dashboard & Demo Interface (Deliverable 7)
+streamlit>=1.24.0       # The quickest way to build the live visualizer
+watchdog>=3.0.0         # Required by Streamlit for live reloading
+
+# Optional: Visualization (Deliverable 6 - Evaluation)
+matplotlib>=3.7.0       # Use this to plot the 'Confidence Score' graph if needed

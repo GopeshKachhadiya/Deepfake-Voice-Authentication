@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI | Deepfake Defense Command</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-shield-halved"></i> SENTINEL <span>AI</span>
+                </div>
+                <div class="system-status">
+                    <span class="status-dot"></span> SECURE NEURAL LINK ACTIVE
+                </div>
+            </div>
+            <nav>
+                <button class="active" data-target="live-mon"><i class="fas fa-broadcast-tower"></i> Live Feed</button>
+                <button data-target="file-scan"><i class="fas fa-microscope"></i> Forensics</button>
+                <button data-target="model-ins"><i class="fas fa-brain"></i> Model Insights</button>
+                <button data-target="sys-health"><i class="fas fa-gauge-high"></i> Performance</button>
+                <button id="theme-btn" class="theme-toggle"><i class="fas fa-adjust"></i></button>
+            </nav>
+        </header>
+
+        <!-- Main Content Layout -->
+        <div class="dashboard-grid">
+
+            <!-- Left Panel: Main Operations -->
+            <main class="ops-panel">
+                <!-- 1. Live Monitoring Section -->
+                <div id="live-mon" class="section active">
+                    <div class="glass-card main-terminal">
+                        <div class="card-header">
+                            <span class="label">REAL-TIME MONITOR</span>
+                            <span class="id">ID: SNTL-001</span>
+                        </div>
+
+                        <div id="status-indicator" class="status-indicator">
+                            <div id="pulse-ring" class="pulse-ring"></div>
+                            <i class="fas fa-microphone-slash"></i>
+                            <canvas id="waveform-visualizer" class="waveform-canvas"></canvas>
+                        </div>
+
+                        <h2 id="result-text" class="result-text">System Standby</h2>
+                        <p id="conf-text" class="confidence-text">Ready for neural stream analysis</p>
+
+                        <div class="action-zone">
+                            <button id="start-btn" class="btn-primary">
+                                <i class="fas fa-power-off"></i> INITIALIZE MONITORING
+                            </button>
+                        </div>
+
+                        <div class="tech-specs">
+                            <div class="spec-item">
+                                <i class="fas fa-wave-square"></i>
+                                <span>Spectral Expert: Wav2Vec2</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Prosody Expert: LSTM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. File Scanning Section -->
+                <div id="file-scan" class="section">
+                    <div class="glass-card main-terminal">
+                        <div class="card-header">
+                            <span class="label">FORENSIC LABORATORY</span>
+                            <span class="id">ID: SNTL-LAB</span>
+                        </div>
+                        <p class="description">Upload .WAV evidence for multi-layer spectral decomposition.</p>
+
+                        <div id="drop-zone" class="upload-area">
+                            <div class="upload-icon">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <p>Drop Evidence File</p>
+                            <span class="subtext">WAV | 16-bit PCM | 16kHz</span>
+                            <input type="file" id="file-input" accept=".wav" hidden>
+                            <div id="file-name" class="file-name"></div>
+                        </div>
+
+                        <div id="file-result" class="result-display">
+                            <!-- Results will appear here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Model Insights Section (New) -->
+                <div id="model-ins" class="section">
+                    <div class="glass-card main-terminal">
+                        <div class="card-header">
+                            <span class="label">NEURAL NETWORK EVALUATION</span>
+                            <span class="id">V2.4 STABLE</span>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="chart-container">
+                                <h3>Classification Accuracy</h3>
+                                <canvas id="accuracyChart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3>Confession Matrix</h3>
+                                <div class="matrix-grid">
+                                    <div class="matrix-cell"><span>True Real</span><strong>98.2%</strong></div>
+                                    <div class="matrix-cell"><span>False Fake</span><strong>1.8%</strong></div>
+                                    <div class="matrix-cell"><span>False Real</span><strong>4.2%</strong></div>
+                                    <div class="matrix-cell"><span>True Fake</span><strong>95.8%</strong></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="architecture-map">
+                            <h3>Dual-Branch Architecture</h3>
+                            <div class="arch-flow">
+                                <div class="node">Audio</div>
+                                <div class="connector"></div>
+                                <div class="branch">
+                                    <div class="node expert">Spectral (Wav2Vec2)</div>
+                                    <div class="node expert">Prosody (LSTM)</div>
+                                </div>
+                                <div class="connector"></div>
+                                <div class="node final">Weighted Fusion</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. System Health Section -->
+                <div id="sys-health" class="section">
+                    <div class="glass-card main-terminal">
+                        <div class="card-header">
+                            <span class="label">HARDWARE TELEMETRY</span>
+                            <span class="id">NODE: LOCAL-01</span>
+                        </div>
+
+                        <div class="metrics-dashboard">
+                            <div class="metric-box">
+                                <div class="metric-val" id="m-latency">--</div>
+                                <div class="metric-label">Inference Latency</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-val" id="m-throughput">--</div>
+                                <div class="metric-label">Stream Throughput</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-val" id="m-rtf">--</div>
+                                <div class="metric-label">RTI Factor</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-val" id="m-device">--</div>
+                                <div class="metric-label">Compute Core</div>
+                            </div>
+                        </div>
+
+                        <div class="diagnostic-actions">
+                            <button id="health-btn" class="btn-secondary">
+                                <i class="fas fa-stethoscope"></i> RUN FULL DIAGNOSTICS
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Panel: Intelligence Hub -->
+            <aside class="intel-panel">
+                <!-- Threat Pulse -->
+                <div class="glass-card side-card">
+                    <h3>THREAT PULSE</h3>
+                    <div class="pulse-meter">
+                        <div class="meter-bar" id="pulse-bar" style="width: 15%;"></div>
+                    </div>
+                    <div class="pulse-stats">
+                        <span id="pulse-label">LEVEL: LOW</span>
+                        <span id="pulse-val">15%</span>
+                    </div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="glass-card side-card activity-log">
+                    <h3>RECENT ACTIVITY</h3>
+                    <div id="activity-items" class="activity-items">
+                        <div class="log-item">
+                            <i class="fas fa-check-circle secure"></i>
+                            <div class="log-info">
+                                <div class="log-title">System Loaded</div>
+                                <div class="log-time">Just now</div>
+                            </div>
+                        </div>
+                        <!-- More items will be added via JS -->
+                    </div>
+                </div>
+
+                <!-- System Info -->
+                <div class="glass-card side-card info-card">
+                    <div class="info-row">
+                        <span>VERSION</span>
+                        <span>v1.0.4-forensic</span>
+                    </div>
+                    <div class="info-row">
+                        <span>UPTIME</span>
+                        <span id="uptime">00:00:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span>ENGINE</span>
+                        <span>Sentinel-Core-PRO</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

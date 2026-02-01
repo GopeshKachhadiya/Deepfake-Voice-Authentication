@@ -1,0 +1,7 @@
+SENTINEL AI - AUDIT REPORT
+--------------------------
+Timestamp: Sun Feb  1 04:00:39 2026
+Avg Latency: 91.66ms
+Throughput: 10.9/s
+RTF: 16.4x
+Hardware: CPU
